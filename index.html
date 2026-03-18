@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Krypto Intelligence V129 INDUSTRIAL POWERHOUSE</title>
+    <title>Krypto Intelligence V131 FORTRESS</title>
     <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/180/diamond.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,6 +13,7 @@
     <style>
         :root { --bg: #0b0e11; --card: #181a20; --sol: #00e676; --sui: #00c4ff; --purp: #8269d9; --txt: #fff; --red: #f6465d; --gray: #848e9c; --orange: #f7931a; --side: #1e2026; }
         body { background: var(--bg); color: var(--txt); font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        
         .sidebar { position: fixed; left: -280px; top: 0; height: 100%; width: 260px; background: var(--side); border-right: 1px solid #2b2f36; z-index: 2000; transition: 0.3s; padding: 20px; box-sizing: border-box; }
         .sidebar.open { left: 0; }
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1999; display: none; }
@@ -20,34 +21,41 @@
         .nav-item { padding: 12px; border-radius: 12px; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--gray); transition: 0.2s; font-size: 13px; }
         .nav-item:hover, .nav-item.active { background: rgba(130, 105, 217, 0.1); color: var(--purp); }
         .menu-btn { position: absolute; left: 15px; top: 22px; z-index: 1000; cursor: pointer; background: var(--card); padding: 8px; border-radius: 8px; border: 1px solid #2b2f36; }
+
         .header { text-align: center; padding: 15px 0; border-bottom: 1px solid #2b2f36; margin-bottom: 10px; padding-left: 50px; }
         .alltime-val { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
+
         .slider-container { width: 95%; margin: 10px auto; overflow: hidden; position: relative; border-radius: 24px; background: var(--card); border: 1px solid #2b2f36; height: 650px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); width: 1000%; height: 100%; }
         .slide { width: 10%; box-sizing: border-box; height: 100%; padding: 20px; display: flex; flex-direction: column; position: relative; overflow-y: auto; }
-        .card { background: var(--card); border-radius: 20px; padding: 18px; margin-bottom: 12px; border: 1px solid #2b2f36; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        
+        .card { background: var(--card); border-radius: 20px; padding: 18px; margin-bottom: 12px; border: 1px solid #2b2f36; }
         .yield-label { font-size: 11px; color: var(--gray); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .smart-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 18px; text-align: center; }
+        .smart-val { font-size: 18px; font-weight: 900; display: block; color: #fff; }
+        .smart-lbl { font-size: 9px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+
         .ring-box { text-align: center; position: relative; width: 85px; height: 85px; margin: auto; }
         .ring-svg { transform: rotate(-90deg); width: 85px; height: 85px; }
         .ring-bg { fill: none; stroke: #2b2f36; stroke-width: 8; }
         .ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1.5s; }
         .ring-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 13px; font-weight: 900; }
+
         input, select { background: #2b2f36; border: 1px solid #3d434d; color: #fff; padding: 12px; border-radius: 12px; width: 100%; font-size: 14px; outline:none; box-sizing: border-box; }
         button { background: var(--purp); color: #fff; border: none; padding: 16px; border-radius: 16px; width: 100%; font-weight: 800; cursor: pointer; }
+        
         .history-table { width: 100%; border-collapse: collapse; font-size: 11px; }
         .history-table td { padding: 12px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .tax-badge { font-size: 7px; font-weight: 900; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; display: inline-block; margin-top: 4px; }
+        .tax-badge { font-size: 7px; font-weight: 900; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; display: inline-block; margin-top: 4px; margin-right: 5px; }
         .tax-free { background: var(--sol); color: #000; }
         .taxable { background: rgba(255,255,255,0.05); color: var(--gray); }
+
         .settings-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #3d434d; }
         .dot { height: 5px; width: 5px; background-color: #3d434d; border-radius: 50%; display: inline-block; margin: 0 3px; }
         .dot.active { width: 15px; background-color: var(--purp); border-radius: 3px; }
         .prog-row { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 8px; border-left: 4px solid var(--purp); }
-        
-        .ki-card { background: rgba(255,255,255,0.04); border: 1px solid #2b2f36; padding: 15px; border-radius: 16px; text-align: center; }
-        .ki-val { font-size: 18px; font-weight: 900; color: #fff; }
-        .ki-lbl { font-size: 9px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
-        
         .loading-scr { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 5000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     </style>
 </head>
@@ -55,13 +63,13 @@
 
     <div id="loading-scr" class="loading-scr">
         <div style="border:4px solid #3d434d; border-top:4px solid var(--purp); border-radius:50%; width:40px; height:40px; animation:spin 1s linear infinite;"></div>
-        <p style="margin-top:20px; font-size:12px;">SYNCHRONISIERE DATENBANK V129...</p>
+        <p style="margin-top:20px; font-size:12px;">SYSTEM INITIALISIERUNG V131...</p>
     </div>
 
     <div class="menu-btn" onclick="toggleSide()"><img src="https://img.icons8.com/ios-filled/24/ffffff/menu--v1.png" width="20"></div>
     <div class="sidebar-overlay" id="overlay" onclick="toggleSide()"></div>
     <div class="sidebar" id="sidebar">
-        <div class="yield-label" style="margin-bottom: 25px; color:var(--purp)">Universal Overseer</div>
+        <div class="yield-label" style="margin-bottom: 25px; color:var(--purp)">Universal Cockpit</div>
         <div class="nav-item active" onclick="goToSlide(0)">Dashboard</div>
         <div class="nav-item" onclick="goToSlide(1)">Portfolio Progress</div>
         <div class="nav-item" onclick="goToSlide(2)">Market Live</div>
@@ -70,7 +78,7 @@
         <div class="nav-item" onclick="goToSlide(5)">Multi Kaufkraft</div>
         <div class="nav-item" onclick="goToSlide(6)">Staking Control</div>
         <div class="nav-item" onclick="goToSlide(7)">Exit Simulator</div>
-        <div class="nav-item" onclick="goToSlide(8)">⚙️ Assets & Exits</div>
+        <div class="nav-item" onclick="goToSlide(8)">⚙️ Asset-Management</div>
         <div class="nav-item" onclick="goToSlide(9)">TradingView</div>
     </div>
 
@@ -83,32 +91,32 @@
         <div class="slider-track" id="track">
             <div class="slide">
                 <div><div class="yield-label">Markttrend (Live)</div><div style="height:150px"><canvas id="monthChart"></canvas></div></div>
-                <div style="margin-top:25px; border-top: 1px solid #2b2f36; padding-top:20px;"><div class="yield-label">Portfolio History</div><div style="height:150px"><canvas id="alltimeChart"></canvas></div></div>
+                <div style="margin-top:25px; border-top: 1px solid #2b2f36; padding-top:20px;"><div class="yield-label">Portfolio Path</div><div style="height:150px"><canvas id="alltimeChart"></canvas></div></div>
             </div>
             <div class="slide"><div class="yield-label">Meine Ziele & Break-Even</div><div id="rings-container" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;"></div></div>
             <div class="slide"><div class="yield-label">Top 15 Market Live</div><table class="history-table" style="width:100%"><tbody id="top15-body"></tbody></table></div>
             <div class="slide">
-                <div style="display:flex; justify-content:space-between; align-items:center;"><div class="yield-label">Intelligence Pro</div><select id="intel-asset-select" onchange="updateUI()"></select></div>
-                <div id="matrix-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:15px;"></div>
-                <div id="liq-banner" style="background:rgba(130,105,217,0.1); border:1px dashed var(--purp); padding:12px; border-radius:12px; margin-top:15px; font-size:10px; text-align:center;">Analysiere Daten...</div>
+                <div style="display:flex; justify-content:space-between; align-items:center;"><div class="yield-label">Intelligence</div><select id="intel-asset-select" onchange="switchSimulatorAsset()"></select></div>
+                <div id="matrix-grid" class="grid-2" style="margin-top:15px;"></div>
+                <div id="liq-banner" style="background:rgba(130,105,217,0.1); border:1px dashed var(--purp); padding:12px; border-radius:12px; margin-top:15px; font-size:10px; text-align:center;">Asset wählen...</div>
             </div>
             <div class="slide"><div class="yield-label">Wealth Scenarios 2031</div><div id="scenarios-list"></div></div>
             <div class="slide">
-                <div class="yield-label">Kaufkraft (Live)</div>
+                <div class="yield-label">Multi Kaufkraft</div>
                 <input type="number" id="calc-euro" value="500" style="font-size:24px; text-align:center; border:2px solid var(--purp);" oninput="updateUI()">
-                <div id="calc-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:15px;"></div>
+                <div id="calc-grid" class="grid-2" style="margin-top:15px;"></div>
             </div>
-            <div class="slide"><div class="yield-label">Passives Einkommen</div><div id="staking-list"></div></div>
+            <div class="slide"><div class="yield-label">Passive Rewards</div><div id="staking-list"></div></div>
             <div class="slide">
-                <div class="yield-label">Universeller Exit Simulator</div>
+                <div class="yield-label">Universal Exit Simulator</div>
                 <div id="exit-strat-list" class="card" style="background:rgba(0,230,118,0.05); border:1px solid var(--sol);"></div>
-                <div class="card" style="background:rgba(130,105,217,0.1);"><div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;"><div><small>Simulation Menge</small><input type="number" id="sim-qty" oninput="updateUI()"></div><div><small>Simulation Kurs $</small><input type="number" id="sim-price" oninput="updateUI()"></div></div><div style="text-align:right; margin-top:10px;"><b id="sim-res" style="color:var(--sol); font-size:20px;">--</b></div></div>
+                <div class="card" style="background:rgba(130,105,217,0.1);"><div class="grid-2"><div><small>Simulation Menge</small><input type="number" id="sim-qty" value="0" oninput="manualSim()"></div><div><small>Simulation Kurs $</small><input type="number" id="sim-price" value="0" oninput="manualSim()"></div></div><div style="text-align:right; margin-top:15px;"><b id="sim-res" style="color:var(--sol); font-size:22px;">--</b></div></div>
             </div>
             <div class="slide">
-                <div class="yield-label">⚙️ Asset & Exit Konfiguration</div>
+                <div class="yield-label">⚙️ Asset Konfiguration</div>
                 <div id="settings-list"></div>
                 <button onclick="addNewAsset()" style="margin-bottom:10px; background:#2b2f36;">+ NEUER COIN</button>
-                <button onclick="saveAndReload()" style="background:var(--sol); color:#000;">SPEICHERN & ÜBERNEHMEN</button>
+                <button onclick="saveAndReload()" style="background:var(--sol); color:#000;">ALLE ÄNDERUNGEN SPEICHERN</button>
             </div>
             <div class="slide" style="padding:0"><div id="tradingview_chart" style="height: 100%; width: 100%;"></div></div>
         </div>
@@ -136,14 +144,9 @@
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
         const DB_KEY = 'krypto_v1';
-        const CONFIG_KEY = 'krypto_master_config_v3';
+        const CONFIG_KEY = 'krypto_final_v131';
         let txs = JSON.parse(localStorage.getItem(DB_KEY)) || [];
-        let config = JSON.parse(localStorage.getItem(CONFIG_KEY)) || { 
-            assets: [
-                { symbol: 'SOL', goal: 700, apy: 6.29, exits: [116, 160, 210, 260], exitPcts: [10, 20, 15, 20], worst: 150, normal: 260, best: 500 },
-                { symbol: 'SUI', goal: 8000, apy: 0, exits: [3, 5, 8, 12], exitPcts: [10, 20, 15, 20], worst: 2.5, normal: 5, best: 12 }
-            ]
-        };
+        let config = JSON.parse(localStorage.getItem(CONFIG_KEY)) || { assets: [] };
         let prices = { EUR: 0.94 };
         let currentSlide = 0, portfolioChart, mChart;
 
@@ -171,105 +174,108 @@
             const list = document.getElementById('settings-list'); list.innerHTML = '';
             config.assets.forEach((a, i) => {
                 list.innerHTML += `<div class="settings-item">
-                <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><b>Asset ${i+1}</b><span style="color:var(--red); font-weight:bold;" onclick="config.assets.splice(${i},1); renderSettings();">LÖSCHEN</span></div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><b>Coin ${i+1}</b><span style="color:var(--red); font-weight:bold;" onclick="config.assets.splice(${i},1); renderSettings();">✕</span></div>
                 <div class="grid-half"><input type="text" placeholder="Symbol" value="${a.symbol}" onchange="config.assets[${i}].symbol=this.value.toUpperCase()"><input type="number" placeholder="Zielmenge" value="${a.goal}" onchange="config.assets[${i}].goal=parseFloat(this.value)"></div>
-                <div style="margin-top:10px;"><small>Exit Preise ($)</small><div style="display:flex; gap:3px;"><input type="number" value="${a.exits[0]}" onchange="config.assets[${i}].exits[0]=parseFloat(this.value)"><input type="number" value="${a.exits[1]}" onchange="config.assets[${i}].exits[1]=parseFloat(this.value)"><input type="number" value="${a.exits[2]}" onchange="config.assets[${i}].exits[2]=parseFloat(this.value)"><input type="number" value="${a.exits[3]}" onchange="config.assets[${i}].exits[3]=parseFloat(this.value)"></div></div>
-                <div style="margin-top:10px;"><small>Szenarien (Worst/Normal/Best $)</small><div style="display:flex; gap:3px;"><input type="number" value="${a.worst}" onchange="config.assets[${i}].worst=parseFloat(this.value)"><input type="number" value="${a.normal}" onchange="config.assets[${i}].normal=parseFloat(this.value)"><input type="number" value="${a.best}" onchange="config.assets[${i}].best=parseFloat(this.value)"></div></div>
+                <div style="margin-top:10px;"><small>Exit Preise ($ L1-L4)</small><div style="display:flex; gap:3px;"><input type="number" value="${a.exits[0]}" onchange="config.assets[${i}].exits[0]=parseFloat(this.value)"><input type="number" value="${a.exits[1]}" onchange="config.assets[${i}].exits[1]=parseFloat(this.value)"><input type="number" value="${a.exits[2]}" onchange="config.assets[${i}].exits[2]=parseFloat(this.value)"><input type="number" value="${a.exits[3]}" onchange="config.assets[${i}].exits[3]=parseFloat(this.value)"></div></div>
                 </div>`;
             });
         }
 
         function saveAndReload() { localStorage.setItem(CONFIG_KEY, JSON.stringify(config)); location.reload(); }
 
-        function updateUI() {
-            let totalUSD = 0, invE = 0, wT = 0, nT = 0, bT = 0; 
-            const holdings = {};
-            config.assets.forEach(a => holdings[a.symbol] = { qty: 0, inv: 0, free: 0 });
+        // Simulator Logic
+        function switchSimulatorAsset() {
+            const selA = document.getElementById('intel-asset-select').value;
+            const holdings = getHoldings();
+            const conf = config.assets.find(a => a.symbol === selA);
+            if(conf && holdings[selA]) {
+                document.getElementById('sim-qty').value = holdings[selA].qty.toFixed(2);
+                document.getElementById('sim-price').value = conf.exits[0] || 0;
+            }
+            updateUI();
+        }
 
+        function manualSim() {
+            const q = parseFloat(document.getElementById('sim-qty').value || 0);
+            const p = parseFloat(document.getElementById('sim-price').value || 0);
+            document.getElementById('sim-res').innerText = (q * p).toLocaleString() + " $";
+        }
+
+        function getHoldings() {
+            const h = {};
+            config.assets.forEach(a => h[a.symbol] = { qty: 0, inv: 0, free: 0 });
             txs.forEach(t => {
                 const f = (t.type === 'sell' ? -1 : 1);
-                if(holdings[t.asset]) { 
-                    holdings[t.asset].qty += (t.amount * f); holdings[t.asset].inv += (t.eur * f); 
-                    if(f>0 && (new Date() - new Date(t.date) > 31536000000)) holdings[t.asset].free += t.amount;
+                if(h[t.asset]) { 
+                    h[t.asset].qty += (t.amount * f); h[t.asset].inv += (t.eur * f); 
+                    if(f>0 && (new Date() - new Date(t.date) > 31536000000)) h[t.asset].free += t.amount;
                 }
-                invE += (t.eur * f);
             });
+            return h;
+        }
+
+        function updateUI() {
+            let totalUSD = 0, invE = 0, wT = 0, nT = 0, bT = 0; 
+            const holdings = getHoldings();
+
+            txs.forEach(t => { invE += (t.type === 'sell' ? -t.eur : t.eur); });
 
             const ringBox = document.getElementById('rings-container'); ringBox.innerHTML = '';
             config.assets.forEach(a => {
-                const h = holdings[a.symbol] || {qty:0, inv:0};
+                const h = holdings[a.symbol];
                 const pct = Math.min((h.qty/a.goal)*100, 100) || 0;
-                const be = h.qty > 0 ? (h.inv / h.qty / prices.EUR).toFixed(2) : '--';
-                const curPrice = prices[a.symbol] || 0;
-                totalUSD += (h.qty * curPrice);
-                
-                wT += (a.goal * (a.worst || curPrice)); nT += (a.goal * (a.normal || curPrice*2)); bT += (a.goal * (a.best || curPrice*5));
-                
+                const be = h.qty > 0 ? (h.inv / h.qty / prices.EUR).toFixed(2) : '0.00';
+                const cp = prices[a.symbol] || 0;
+                totalUSD += (h.qty * cp);
+                wT += (a.goal * (a.worst || cp)); nT += (a.goal * (a.normal || cp*2)); bT += (a.goal * (a.best || cp*5));
                 ringBox.innerHTML += `<div class="card" style="text-align:center; padding:10px;"><div class="ring-box"><svg class="ring-svg"><circle class="ring-bg" cx="42" cy="42" r="38"/><circle class="ring-fill" cx="42" cy="42" r="38" stroke="${pct>=100?'var(--sol)':'var(--purp)'}" stroke-dasharray="238.7" stroke-dashoffset="${238.7 - (238.7 * pct / 100)}"/></svg><div class="ring-text">${pct.toFixed(0)}%</div></div><b style="display:block; margin-top:8px;">${a.symbol}</b><small style="color:var(--sol)">BE: $${be}</small></div>`;
             });
 
             document.getElementById('total-val-usd').innerText = '$ ' + totalUSD.toLocaleString(undefined, {minimumFractionDigits: 2});
-            let diffE = (totalUSD * prices.EUR - invE);
+            let diffE = (totalUSD * prices.EUR - (txs.length > 0 ? invE : 0));
             document.getElementById('total-perf-eur').innerText = diffE.toLocaleString(undefined, {minimumFractionDigits: 2}) + ' €';
             document.getElementById('total-perf-eur').style.color = diffE >= 0 ? 'var(--sol)' : 'var(--red)';
 
-            document.getElementById('scenarios-list').innerHTML = `<div class="prog-row" style="border-color:var(--red)"><span>Worst Case Portfolio</span><b>$${wT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--purp)"><span>Normal Case Portfolio</span><b>$${nT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--sol)"><span>Best Case Portfolio</span><b>$${bT.toLocaleString()}</b></div>`;
+            document.getElementById('scenarios-list').innerHTML = `<div class="prog-row" style="border-color:var(--red)"><span>Worst Portfolio</span><b>$${wT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--purp)"><span>Normal Portfolio</span><b>$${nT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--sol)"><span>Best Case Portfolio</span><b>$${bT.toLocaleString()}</b></div>`;
 
-            const cVal = parseFloat(document.getElementById('calc-euro').value) || 0;
             const cGrid = document.getElementById('calc-grid'); cGrid.innerHTML = '';
-            config.assets.forEach(a => { 
-                const amt = (cVal / prices.EUR) / (prices[a.symbol] || 1); 
-                cGrid.innerHTML += `<div class="ki-card"><span class="ki-val">${amt.toFixed(3)}</span><small class="ki-lbl">${a.symbol}</small></div>`; 
-            });
+            const cVal = parseFloat(document.getElementById('calc-euro').value) || 0;
+            config.assets.forEach(a => { const amt = (cVal / prices.EUR) / (prices[a.symbol] || 1); cGrid.innerHTML += `<div class="smart-card"><span class="smart-val">${amt.toFixed(3)}</span><small class="smart-lbl">${a.symbol}</small></div>`; });
 
-            // Intelligence Pro & Exit Simulator sync
             const selA = document.getElementById('intel-asset-select').value;
             const conf = config.assets.find(a => a.symbol === selA);
             if(conf) {
-                document.getElementById('matrix-grid').innerHTML = `<div class="ki-card"><small class="ki-lbl">PREIS</small><br><span class="ki-val">$${(prices[selA]||0).toLocaleString()}</span></div><div class="ki-card"><small class="ki-lbl">HOLDINGS</small><br><span class="ki-val">${(holdings[selA].qty||0).toFixed(2)}</span></div><div class="ki-card"><small class="ki-lbl">BE-KURS</small><br><span class="ki-val">$${(holdings[selA].inv / (holdings[selA].qty||1) / prices.EUR).toFixed(2)}</span></div><div class="ki-card"><small class="ki-lbl">RSI (14)</small><br><span class="ki-val">46.5</span></div>`;
-                document.getElementById('liq-banner').innerText = `Ziel-Exit 1 für ${selA} bei $${conf.exits[0]}`;
+                document.getElementById('matrix-grid').innerHTML = `<div class="smart-card"><small class="smart-lbl">PREIS</small><br><span class="smart-val">$${(prices[selA]||0).toLocaleString()}</span></div><div class="smart-card"><small class="smart-lbl">HOLDINGS</small><br><span class="smart-val">${(holdings[selA].qty||0).toFixed(2)}</span></div><div class="smart-card"><small class="smart-lbl">BE-KURS</small><br><span class="smart-val">$${(holdings[selA].inv / (holdings[selA].qty||1) / prices.EUR).toFixed(2)}</span></div><div class="smart-card"><small class="smart-lbl">RSI (14)</small><br><span class="smart-val">46.5</span></div>`;
+                document.getElementById('liq-banner').innerText = `Ziel Exit Level 1 für ${selA} bei $${conf.exits[0]}`;
                 document.getElementById('exit-strat-list').innerHTML = conf.exits.map((ex, i) => `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:12px;"><span>$${ex} (${conf.exitPcts[i]}%)</span><b style="color:var(--sol)">${(holdings[selA].free * conf.exitPcts[i]/100).toFixed(2)} ${selA}</b></div>`).join('');
-                
-                // Populate Simulator
-                if(!document.getElementById('sim-qty').value) document.getElementById('sim-qty').value = holdings[selA].qty.toFixed(2);
-                if(!document.getElementById('sim-price').value) document.getElementById('sim-price').value = conf.exits[0];
             }
-            const stakingL = document.getElementById('staking-list'); stakingL.innerHTML = '';
-            config.assets.filter(a => a.apy > 0).forEach(a => { stakingL.innerHTML += `<div class="prog-row"><span>${a.symbol} (${a.apy}%)</span><b>+${((holdings[a.symbol].qty * a.apy/100)/365).toFixed(4)} / Tag</b></div>`; });
-
-            // Sim Res
-            const sq = parseFloat(document.getElementById('sim-qty').value || 0);
-            const sp = parseFloat(document.getElementById('sim-price').value || 0);
-            document.getElementById('sim-res').innerText = (sq * sp).toLocaleString() + " $";
-
-            renderCharts(invE, totalUSD * prices.EUR);
-            renderHist();
+            manualSim();
+            renderCharts(invE, totalUSD * prices.EUR); renderHist();
         }
 
         function renderCharts(inv, val) {
             const ctx = document.getElementById('alltimeChart').getContext('2d');
             const mCtx = document.getElementById('monthChart').getContext('2d');
             if(portfolioChart) portfolioChart.destroy();
-            portfolioChart = new Chart(ctx, { type: 'line', data: { labels: ['Invest','Wert'], datasets: [{ data: [inv, val], borderColor: '#8269d9', backgroundColor: 'rgba(130,105,217,0.1)', fill: true, tension: 0.4 }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+            portfolioChart = new Chart(ctx, { type: 'line', data: { labels: ['Invest','Wert'], datasets: [{ data: [inv, val], borderColor: '#8269d9', backgroundColor: 'rgba(130,105,217,0.1)', fill: true }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
             if(mChart) mChart.destroy();
-            mChart = new Chart(mCtx, { type: 'line', data: { labels: ['Start','Jetzt'], datasets: [{ data: [val*0.9, val], borderColor: '#00e676', tension: 0.4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { ticks: { color: '#fff' } } } } });
+            mChart = new Chart(mCtx, { type: 'line', data: { labels: ['Start','Jetzt'], datasets: [{ data: [val*0.9, val], borderColor: '#00e676', tension: 0.4 }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { ticks: { color: '#fff' } } } } });
         }
 
         function renderHist() {
             const b = document.getElementById('history-body'); b.innerHTML = '';
             txs.slice().reverse().forEach((t, i) => {
                 const isFree = (new Date() - new Date(t.date) > 31536000000);
-                const isSell = t.type === 'sell';
-                b.innerHTML += `<tr><td><b style="color:${isSell?'var(--red)':'var(--txt)'}">${t.asset}</b><br><small>${t.date}</small><br><span class="tax-badge ${isFree?'tax-free':'taxable'}">${isFree?'FREI ✅':'BAR'}</span></td><td style="text-align:right;">${isSell?'-':'+'}${t.amount.toFixed(3)}<br><small>$${t.price}</small><br><b>${(t.eur||0).toLocaleString()} €</b></td><td style="text-align:right;"><span style="color:var(--red);" onclick="delTx(${txs.length-1-i})">✕</span></td></tr>`;
+                b.innerHTML += `<tr><td><b>${t.asset}</b><br><small>${t.date}</small><br><span class="tax-badge ${isFree?'tax-free':'taxable'}">${isFree?'FREI ✅':'BAR'}</span></td><td style="text-align:right;">${t.amount.toFixed(3)}<br><b>${(t.eur||0).toLocaleString()} €</b></td><td style="text-align:right;"><span style="color:var(--red);" onclick="delTx(${txs.length-1-i})">✕</span></td></tr>`;
             });
         }
 
         function generateSteuerPDF() {
             const { jsPDF } = window.jspdf; const doc = new jsPDF();
             doc.text("Portfolio Report", 14, 20);
-            const rows = txs.map(t => [t.date, t.asset, (t.type||'buy').toUpperCase(), t.amount, t.price+"$", (new Date()-new Date(t.date)>31536000000?'FREI':'BAR')]);
-            doc.autoTable({ head:[['Datum','Asset','Typ','Menge','Kurs','Status']], body:rows, startY:30 });
-            doc.save("Report.pdf");
+            const rows = txs.map(t => [t.date, t.asset, t.amount, (t.eur||0)+"€", (new Date()-new Date(t.date)>31536000000?'FREI':'BAR')]);
+            doc.autoTable({ head:[['Datum','Asset','Menge','Invest','Status']], body:rows, startY:30 });
+            doc.save("Krypto_Report.pdf");
         }
 
         function saveTx() {
@@ -278,24 +284,29 @@
         }
 
         function exportData() { navigator.clipboard.writeText(JSON.stringify(txs)).then(() => alert("Kopiert!")); }
-        function importData() { let c = prompt("Backup einfügen:"); if(c) { txs = JSON.parse(c); localStorage.setItem(DB_KEY, JSON.stringify(txs)); location.reload(); } }
+        function importData() { let c = prompt("Backup:"); if(c) { txs = JSON.parse(c); localStorage.setItem(DB_KEY, JSON.stringify(txs)); location.reload(); } }
         function delTx(i) { if(confirm('Löschen?')) { txs.splice(i,1); localStorage.setItem(DB_KEY, JSON.stringify(txs)); updateUI(); } }
         function updateTVChart() { const s = document.getElementById('intel-asset-select').value; if(s) new TradingView.widget({ "autosize": true, "symbol": "BINANCE:"+s+"USDT", "interval": "60", "theme": "dark", "container_id": "tradingview_chart", "hide_top_toolbar": true }); }
 
         async function init() {
+            fetchTop15();
             const r = await fetch('https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=EUR'); prices.EUR = (await r.json()).EUR;
-            const syms = config.assets.map(a => a.symbol).join(',');
-            const pr = await fetch(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${syms}&tsyms=USD`);
-            const pData = await pr.json();
-            config.assets.forEach(a => { if(pData[a.symbol]) prices[a.symbol] = pData[a.symbol].USD; });
             const mSel = document.getElementById('intel-asset-select'), jSel = document.getElementById('tx-asset');
             config.assets.forEach(a => { mSel.innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`; jSel.innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`; });
-            const streams = config.assets.map(a => `${a.symbol.toLowerCase()}usdt@trade`).join('/');
-            const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${streams}`);
-            ws.onmessage = (e) => { const d = JSON.parse(e.data); prices[d.s.replace('USDT','')] = parseFloat(d.p); updateUI(); };
+            
+            if(config.assets.length > 0) {
+                const syms = config.assets.map(a => a.symbol).join(',');
+                const pr = await fetch(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${syms}&tsyms=USD`);
+                const pData = await pr.json();
+                config.assets.forEach(a => { if(pData[a.symbol]) prices[a.symbol] = pData[a.symbol].USD; });
+                const streams = config.assets.map(a => `${a.symbol.toLowerCase()}usdt@trade`).join('/');
+                const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${streams}`);
+                ws.onmessage = (e) => { const d = JSON.parse(e.data); prices[d.s.replace('USDT','')] = parseFloat(d.p); updateUI(); };
+            }
             document.getElementById('loading-scr').style.display = 'none';
-            fetchTop15(); renderSettings(); updateUI();
-            for(let i=0; i<10; i++) document.getElementById('dotBox').innerHTML += `<span class="dot ${i===0?'active':''}"></span>`;
+            renderSettings(); updateUI();
+            const dotBox = document.getElementById('dotBox');
+            for(let i=0; i<10; i++) dotBox.innerHTML += `<span class="dot ${i===0?'active':''}"></span>`;
             document.getElementById('tx-date').value = new Date().toISOString().split('T')[0];
         }
         init();
