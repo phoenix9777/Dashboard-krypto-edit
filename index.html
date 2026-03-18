@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Krypto Intelligence V126 STAKING MASTER</title>
+    <title>Krypto Intelligence V127 TABULA RASA</title>
     <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/180/diamond.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -22,53 +22,48 @@
         .menu-btn { position: absolute; left: 15px; top: 22px; z-index: 1000; cursor: pointer; background: var(--card); padding: 8px; border-radius: 8px; border: 1px solid #2b2f36; }
         .header { text-align: center; padding: 15px 0; border-bottom: 1px solid #2b2f36; margin-bottom: 10px; padding-left: 50px; }
         .alltime-val { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
-        .slider-container { width: 95%; margin: 10px auto; overflow: hidden; position: relative; border-radius: 24px; background: var(--card); border: 1px solid #2b2f36; height: 650px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .slider-container { width: 95%; margin: 10px auto; overflow: hidden; position: relative; border-radius: 24px; background: var(--card); border: 1px solid #2b2f36; height: 650px; }
         .slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); width: 1000%; height: 100%; }
         .slide { width: 10%; box-sizing: border-box; height: 100%; padding: 20px; display: flex; flex-direction: column; position: relative; overflow-y: auto; }
         .card { background: var(--card); border-radius: 20px; padding: 18px; margin-bottom: 12px; border: 1px solid #2b2f36; }
         .yield-label { font-size: 11px; color: var(--gray); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
-        .ind-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.04); }
-        .ind-val { font-size: 14px; font-weight: 800; display: block; margin-top: 2px; }
-        .ind-lbl { font-size: 8px; color: var(--gray); text-transform: uppercase; }
+        .ring-box { text-align: center; position: relative; width: 85px; height: 85px; margin: auto; }
+        .ring-svg { transform: rotate(-90deg); width: 85px; height: 85px; }
+        .ring-bg { fill: none; stroke: #2b2f36; stroke-width: 8; }
+        .ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1.5s; }
+        .ring-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 13px; font-weight: 900; }
         input, select { background: #2b2f36; border: 1px solid #3d434d; color: #fff; padding: 12px; border-radius: 12px; width: 100%; font-size: 14px; outline:none; box-sizing: border-box; }
         button { background: var(--purp); color: #fff; border: none; padding: 16px; border-radius: 16px; width: 100%; font-weight: 800; cursor: pointer; }
         .history-table { width: 100%; border-collapse: collapse; font-size: 11px; }
         .tax-badge { font-size: 7px; font-weight: 900; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; display: inline-block; margin-top: 4px; }
         .tax-free { background: var(--sol); color: #000; }
-        .taxable { background: rgba(255,255,255,0.05); color: var(--gray); }
         .settings-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #3d434d; }
         .dot { height: 5px; width: 5px; background-color: #3d434d; border-radius: 50%; display: inline-block; margin: 0 3px; }
         .dot.active { width: 15px; background-color: var(--purp); border-radius: 3px; }
         .prog-row { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 8px; border-left: 4px solid var(--purp); }
-        .loading-scr { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 5000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     </style>
 </head>
 <body>
 
-    <div id="loading-scr" class="loading-scr">
-        <div style="border:4px solid #3d434d; border-top:4px solid var(--purp); border-radius:50%; width:40px; height:40px; animation:spin 1s linear infinite;"></div>
-        <p style="margin-top:20px; font-size:12px;">SYSTEM UPDATE & SYNC...</p>
-    </div>
-
     <div class="menu-btn" onclick="toggleSide()"><img src="https://img.icons8.com/ios-filled/24/ffffff/menu--v1.png" width="20"></div>
     <div class="sidebar-overlay" id="overlay" onclick="toggleSide()"></div>
     <div class="sidebar" id="sidebar">
-        <div class="yield-label" style="margin-bottom: 25px; color:var(--purp)">Universal Architect</div>
+        <div class="yield-label" style="margin-bottom: 25px; color:var(--purp)">Universal Tabula Rasa</div>
         <div class="nav-item active" onclick="goToSlide(0)">Dashboard</div>
-        <div class="nav-item" onclick="goToSlide(1)">Portfolio Progress</div>
+        <div class="nav-item" onclick="goToSlide(1)">Asset Progress</div>
         <div class="nav-item" onclick="goToSlide(2)">Market Live</div>
         <div class="nav-item" onclick="goToSlide(3)">Intelligence Pro</div>
         <div class="nav-item" onclick="goToSlide(4)">Wealth Scenarios</div>
-        <div class="nav-item" onclick="goToSlide(5)">Multi Kaufkraft</div>
-        <div class="nav-item" onclick="goToSlide(6)">Staking Master</div>
+        <div class="nav-item" onclick="goToSlide(5)">Kaufkraft Rechner</div>
+        <div class="nav-item" onclick="goToSlide(6)">Staking Control</div>
         <div class="nav-item" onclick="goToSlide(7)">Exit Simulator</div>
-        <div class="nav-item" onclick="goToSlide(8)">⚙️ Konfiguration</div>
+        <div class="nav-item" onclick="goToSlide(8)">⚙️ Assets hinzufügen</div>
         <div class="nav-item" onclick="goToSlide(9)">TradingView</div>
     </div>
 
     <div class="header">
-        <div id="total-val-usd" class="alltime-val">$ 0.00</div>
-        <div id="total-perf-eur" style="font-weight:bold; font-size:14px;">0,00 €</div>
+        <div id="total-val-usd" class="alltime-val">$ 0,00</div>
+        <div id="total-perf-eur" style="font-weight:bold; font-size:14px; color:var(--sol);">0,00 €</div>
     </div>
 
     <div class="slider-container" id="slider">
@@ -77,33 +72,30 @@
                 <div><div class="yield-label">Markttrend (Live)</div><div style="height:150px"><canvas id="monthChart"></canvas></div></div>
                 <div style="margin-top:25px; border-top: 1px solid #2b2f36; padding-top:20px;"><div class="yield-label">Portfolio History</div><div style="height:150px"><canvas id="alltimeChart"></canvas></div></div>
             </div>
-            <div class="slide"><div class="yield-label">Meine Ziele & BE</div><div id="rings-container" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;"></div></div>
-            <div class="slide"><div class="yield-label">Market Top 15</div><table class="history-table" style="width:100%"><tbody id="top15-body"></tbody></table></div>
+            <div class="slide"><div class="yield-label">Meine Ziele</div><div id="rings-container" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;"></div><div id="empty-hint" style="text-align:center; color:var(--gray); margin-top:50px;">Keine Assets konfiguriert.<br>Gehe zu Slide 8.</div></div>
+            <div class="slide"><div class="yield-label">Top 15 Live</div><table class="history-table" style="width:100%"><tbody id="top15-body"></tbody></table></div>
             <div class="slide">
                 <div style="display:flex; justify-content:space-between; align-items:center;"><div class="yield-label">Intelligence</div><select id="intel-asset-select" onchange="updateUI()"></select></div>
                 <div id="matrix-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:15px;"></div>
-                <div id="liq-banner" style="background:rgba(130,105,217,0.1); border:1px dashed var(--purp); padding:12px; border-radius:12px; margin-top:15px; font-size:10px; text-align:center;">Analysiere Daten...</div>
+                <div id="liq-banner" style="background:rgba(130,105,217,0.1); border:1px dashed var(--purp); padding:12px; border-radius:12px; margin-top:15px; font-size:10px; text-align:center;">Asset wählen...</div>
             </div>
-            <div class="slide"><div class="yield-label">Wealth Scenarios 2031</div><div id="scenarios-list"></div></div>
+            <div class="slide"><div class="yield-label">Wealth Forecasts</div><div id="scenarios-list"></div></div>
             <div class="slide">
                 <div class="yield-label">Multi Kaufkraft</div>
                 <input type="number" id="calc-euro" value="500" style="font-size:24px; text-align:center; border:2px solid var(--purp);" oninput="updateUI()">
                 <div id="calc-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:15px;"></div>
             </div>
-            <div class="slide">
-                <div class="yield-label">Staking Master (Passives Einkommen)</div>
-                <div id="staking-list" style="display:flex; flex-direction:column; gap:10px;"></div>
-            </div>
+            <div class="slide"><div class="yield-label">Staking Rewards</div><div id="staking-list"></div></div>
             <div class="slide">
                 <div class="yield-label">Exit Simulator Pro</div>
-                <div id="exit-strat-list" class="card" style="background:rgba(0,230,118,0.05); border:1px solid var(--sol);"></div>
+                <div id="exit-strat-list" class="card" style="min-height:100px;"></div>
                 <div class="card" style="background:rgba(130,105,217,0.1);"><div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;"><div><small>Simulation Menge</small><input type="number" id="sim-qty" oninput="updateUI()"></div><div><small>Simulation Kurs $</small><input type="number" id="sim-price" oninput="updateUI()"></div></div><div style="text-align:right; margin-top:10px;"><b id="sim-res" style="color:var(--sol); font-size:20px;">--</b></div></div>
             </div>
             <div class="slide">
-                <div class="yield-label">⚙️ Asset & Staking Konfiguration</div>
+                <div class="yield-label">⚙️ Asset Konfiguration</div>
                 <div id="settings-list"></div>
                 <button onclick="addNewAsset()" style="margin-bottom:10px; background:#2b2f36;">+ NEUER COIN</button>
-                <button onclick="saveAndReload()" style="background:var(--sol); color:#000;">ALLE ÄNDERUNGEN SPEICHERN</button>
+                <button onclick="saveAndReload()" style="background:var(--sol); color:#000;">ALLE SPEICHERN</button>
             </div>
             <div class="slide" style="padding:0"><div id="tradingview_chart" style="height: 100%; width: 100%;"></div></div>
         </div>
@@ -131,28 +123,14 @@
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
         const DB_KEY = 'krypto_v1';
-        const CONFIG_KEY = 'krypto_architect_master_config';
+        const CONFIG_KEY = 'krypto_tabula_rasa_config';
         let txs = JSON.parse(localStorage.getItem(DB_KEY)) || [];
-        let config = JSON.parse(localStorage.getItem(CONFIG_KEY)) || { 
-            assets: [
-                { symbol: 'SOL', goal: 700, apy: 6.29, exits: [116, 160, 210, 260], exitPcts: [10, 20, 15, 20], worst: 150, normal: 260, best: 500 },
-                { symbol: 'SUI', goal: 8000, apy: 0, exits: [3, 5, 8, 12], exitPcts: [10, 20, 15, 20], worst: 2.5, normal: 5, best: 12 }
-            ]
-        };
+        let config = JSON.parse(localStorage.getItem(CONFIG_KEY)) || { assets: [] };
         let prices = { EUR: 0.94 };
         let currentSlide = 0, portfolioChart, mChart;
 
         function toggleSide() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('active'); }
         function goToSlide(i) { currentSlide = i; document.getElementById('track').style.transform = `translateX(-${i * 10}%)`; const dots = document.getElementById('dotBox').children; for(let j=0; j<10; j++) if(dots[j]) dots[j].classList.toggle('active', j === i); if(i===9) updateTVChart(); }
-
-        async function fetchTop15() {
-            try {
-                const r = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1');
-                const data = await r.json();
-                const b = document.getElementById('top15-body'); b.innerHTML = '';
-                data.forEach((c, i) => { b.innerHTML += `<tr><td>#${i+1} <b>${c.name}</b></td><td style="text-align:right;">$${c.current_price.toLocaleString()}</td><td style="text-align:right; color:${c.price_change_percentage_24h>=0?'var(--sol)':'var(--red)'}">${c.price_change_percentage_24h.toFixed(1)}%</td></tr>`; });
-            } catch(e) {}
-        }
 
         async function fetchHistoricalPrice() {
             const s = document.getElementById('tx-asset').value, d = document.getElementById('tx-date').value;
@@ -175,10 +153,10 @@
             const list = document.getElementById('settings-list'); list.innerHTML = '';
             config.assets.forEach((a, i) => {
                 list.innerHTML += `<div class="settings-item">
-                <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><b>Coin ${i+1}</b><span style="color:var(--red); font-weight:bold;" onclick="config.assets.splice(${i},1); renderSettings();">LÖSCHEN</span></div>
-                <div class="grid-half"><input type="text" placeholder="Symbol" value="${a.symbol}" onchange="config.assets[${i}].symbol=this.value.toUpperCase()"><input type="number" placeholder="Zielmenge" value="${a.goal}" onchange="config.assets[${i}].goal=parseFloat(this.value)"></div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><b>Coin ${i+1}</b><span style="color:var(--red); font-weight:bold;" onclick="config.assets.splice(${i},1); renderSettings();">✕ LÖSCHEN</span></div>
+                <div class="grid-half"><input type="text" placeholder="Symbol" value="${a.symbol}" onchange="config.assets[${i}].symbol=this.value.toUpperCase()"><input type="number" placeholder="Ziel" value="${a.goal}" onchange="config.assets[${i}].goal=parseFloat(this.value)"></div>
+                <div style="margin-top:10px;"><small>Exit Preise (L1-L4 $)</small><div style="display:flex; gap:3px;"><input type="number" value="${a.exits[0]}" onchange="config.assets[${i}].exits[0]=parseFloat(this.value)"><input type="number" value="${a.exits[1]}" onchange="config.assets[${i}].exits[1]=parseFloat(this.value)"><input type="number" value="${a.exits[2]}" onchange="config.assets[${i}].exits[2]=parseFloat(this.value)"><input type="number" value="${a.exits[3]}" onchange="config.assets[${i}].exits[3]=parseFloat(this.value)"></div></div>
                 <div style="margin-top:10px;"><small>Staking APY %</small><input type="number" step="0.01" value="${a.apy}" onchange="config.assets[${i}].apy=parseFloat(this.value)"></div>
-                <div style="margin-top:10px;"><small>Exits (4 Stufen $)</small><div style="display:flex; gap:3px;"><input type="number" value="${a.exits[0]}" onchange="config.assets[${i}].exits[0]=parseFloat(this.value)"><input type="number" value="${a.exits[1]}" onchange="config.assets[${i}].exits[1]=parseFloat(this.value)"><input type="number" value="${a.exits[2]}" onchange="config.assets[${i}].exits[2]=parseFloat(this.value)"><input type="number" value="${a.exits[3]}" onchange="config.assets[${i}].exits[3]=parseFloat(this.value)"></div></div>
                 </div>`;
             });
         }
@@ -200,54 +178,40 @@
             });
 
             const ringBox = document.getElementById('rings-container'); ringBox.innerHTML = '';
+            document.getElementById('empty-hint').style.display = config.assets.length > 0 ? 'none' : 'block';
+
             config.assets.forEach(a => {
                 const h = holdings[a.symbol] || {qty:0, inv:0};
                 const pct = Math.min((h.qty/a.goal)*100, 100) || 0;
-                const be = h.qty > 0 ? (h.inv / h.qty / prices.EUR).toFixed(2) : '--';
-                const curPrice = prices[a.symbol] || 0;
-                totalUSD += (h.qty * curPrice);
-                wT += (a.goal * (a.worst || curPrice)); nT += (a.goal * (a.normal || curPrice*2)); bT += (a.goal * (a.best || curPrice*5));
-                ringBox.innerHTML += `<div class="card" style="text-align:center;"><div class="ring-box"><svg class="ring-svg"><circle class="ring-bg" cx="42" cy="42" r="38"/><circle class="ring-fill" cx="42" cy="42" r="38" stroke="${pct>=100?'var(--sol)':'var(--purp)'}" stroke-dasharray="238.7" stroke-dashoffset="${238.7 - (238.7 * pct / 100)}"/></svg><div class="ring-text">${pct.toFixed(0)}%</div></div><b style="display:block; margin-top:8px;">${a.symbol}</b><small style="color:var(--sol)">BE: $${be}</small></div>`;
+                const be = h.qty > 0 ? (h.inv / h.qty / prices.EUR).toFixed(2) : '0.00';
+                const cp = prices[a.symbol] || 0;
+                totalUSD += (h.qty * cp);
+                wT += (a.goal * (a.worst || cp)); nT += (a.goal * (a.normal || cp*2)); bT += (a.goal * (a.best || cp*5));
+                ringBox.innerHTML += `<div class="card" style="text-align:center; padding:10px;"><div class="ring-box"><svg class="ring-svg"><circle class="ring-bg" cx="42" cy="42" r="38"/><circle class="ring-fill" cx="42" cy="42" r="38" stroke="${pct>=100?'var(--sol)':'var(--purp)'}" stroke-dasharray="238.7" stroke-dashoffset="${238.7 - (238.7 * pct / 100)}"/></svg><div class="ring-text">${pct.toFixed(0)}%</div></div><b style="display:block; margin-top:8px;">${a.symbol}</b><small style="color:var(--sol)">BE: $${be}</small></div>`;
             });
 
-            document.getElementById('total-val-usd').innerText = '$ ' + totalUSD.toLocaleString(undefined, {maximumFractionDigits: 0});
-            document.getElementById('total-perf-eur').innerText = (totalUSD * prices.EUR - invE).toLocaleString(undefined, {minimumFractionDigits: 2}) + ' €';
+            document.getElementById('total-val-usd').innerText = '$ ' + totalUSD.toLocaleString(undefined, {minimumFractionDigits: 2});
+            let diffE = (totalUSD * prices.EUR - invE);
+            document.getElementById('total-perf-eur').innerText = diffE.toLocaleString(undefined, {minimumFractionDigits: 2}) + ' €';
+            document.getElementById('total-perf-eur').style.color = diffE >= 0 ? 'var(--sol)' : 'var(--red)';
 
-            document.getElementById('scenarios-list').innerHTML = `<div class="prog-row" style="border-color:var(--red)"><span>Worst Portfolio</span><b>$${wT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--purp)"><span>Normal Portfolio</span><b>$${nT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--sol)"><span>Best Case Portfolio</span><b>$${bT.toLocaleString()}</b></div>`;
+            document.getElementById('scenarios-list').innerHTML = `<div class="prog-row" style="border-color:var(--red)"><span>Worst Case Portfolio</span><b>$${wT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--purp)"><span>Normal Case Portfolio</span><b>$${nT.toLocaleString()}</b></div><div class="prog-row" style="border-color:var(--sol)"><span>Best Case Portfolio</span><b>$${bT.toLocaleString()}</b></div>`;
 
-            const cGrid = document.getElementById('calc-grid'); cGrid.innerHTML = '';
             const cVal = parseFloat(document.getElementById('calc-euro').value) || 0;
+            const cGrid = document.getElementById('calc-grid'); cGrid.innerHTML = '';
             config.assets.forEach(a => { const amt = (cVal / prices.EUR) / (prices[a.symbol] || 1); cGrid.innerHTML += `<div class="ind-item"><span class="ind-val">${amt.toFixed(3)}</span><small>${a.symbol}</small></div>`; });
 
-            // Staking Slide
-            const sList = document.getElementById('staking-list'); sList.innerHTML = '';
-            config.assets.forEach(a => {
-                if(a.apy > 0) {
-                    const rew = holdings[a.symbol].qty * (a.apy/100);
-                    sList.innerHTML += `<div class="card">
-                        <div style="display:flex; justify-content:space-between;"><b style="color:var(--sol)">${a.symbol}</b><span>${a.apy}% APY</span></div>
-                        <div style="display:flex; justify-content:space-around; margin-top:10px;">
-                            <div><small>Tag</small><br><b>+${(rew/365).toFixed(4)}</b></div>
-                            <div><small>Monat</small><br><b>+${(rew/12).toFixed(2)}</b></div>
-                            <div><small>Jahr</small><br><b style="color:var(--purp)">+${rew.toFixed(2)}</b></div>
-                        </div>
-                    </div>`;
-                }
-            });
-
-            // Exit Simulator
             const selA = document.getElementById('intel-asset-select').value;
             const conf = config.assets.find(a => a.symbol === selA);
             if(conf) {
-                document.getElementById('matrix-grid').innerHTML = `<div class="ind-item"><span class="ind-lbl">LIVE PREIS</span><span class="ind-val">$${(prices[selA]||0).toLocaleString()}</span></div><div class="ind-item"><span class="ind-lbl">HOLDINGS</span><span class="ind-val">${(holdings[selA].qty||0).toFixed(2)}</span></div><div class="ind-item"><span class="ind-lbl">STEUERFREI</span><span class="ind-val">${(holdings[selA].free||0).toFixed(2)}</span></div><div class="ind-item"><span class="ind-lbl">RSI (14)</span><span class="ind-val">48.5</span></div>`;
-                document.getElementById('liq-banner').innerText = `Level 1 Exit für ${selA} bei $${conf.exits[0]}`;
+                document.getElementById('matrix-grid').innerHTML = `<div class="ind-item"><span class="ind-lbl">PREIS</span><span class="ind-val">$${(prices[selA]||0).toLocaleString()}</span></div><div class="ind-item"><span class="ind-lbl">HOLDINGS</span><span class="ind-val">${(holdings[selA].qty||0).toFixed(2)}</span></div><div class="ind-item"><span class="ind-lbl">STEUERFREI</span><span class="ind-val">${(holdings[selA].free||0).toFixed(2)}</span></div><div class="ind-item"><span class="ind-lbl">RSI (14)</span><span class="ind-val">48.2</span></div>`;
+                document.getElementById('liq-banner').innerText = `Ziel Exit 1 für ${selA} bei $${conf.exits[0]}`;
                 document.getElementById('exit-strat-list').innerHTML = conf.exits.map((ex, i) => `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:12px;"><span>$${ex} (${conf.exitPcts[i]}%)</span><b style="color:var(--sol)">${(holdings[selA].free * conf.exitPcts[i]/100).toFixed(2)} ${selA}</b></div>`).join('');
-                
-                if(!document.getElementById('sim-qty').value) document.getElementById('sim-qty').value = holdings[selA].qty.toFixed(2);
-                if(!document.getElementById('sim-price').value) document.getElementById('sim-price').value = conf.exits[0];
             }
-            document.getElementById('sim-res').innerText = (parseFloat(document.getElementById('sim-qty').value || 0) * parseFloat(document.getElementById('sim-price').value || 0)).toLocaleString() + " $";
+            const sList = document.getElementById('staking-list'); sList.innerHTML = '';
+            config.assets.filter(a => a.apy > 0).forEach(a => { sList.innerHTML += `<div class="prog-row"><span>${a.symbol} (${a.apy}%)</span><b>+${((holdings[a.symbol].qty * a.apy/100)/365).toFixed(4)} / Tag</b></div>`; });
 
+            document.getElementById('sim-res').innerText = (parseFloat(document.getElementById('sim-qty').value || 0) * parseFloat(document.getElementById('sim-price').value || 0)).toLocaleString() + " $";
             renderCharts(invE, totalUSD * prices.EUR); renderHist();
         }
 
@@ -257,7 +221,7 @@
             if(portfolioChart) portfolioChart.destroy();
             portfolioChart = new Chart(ctx, { type: 'line', data: { labels: ['Invest','Wert'], datasets: [{ data: [inv, val], borderColor: '#8269d9', backgroundColor: 'rgba(130,105,217,0.1)', fill: true }]}, options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false } } } });
             if(mChart) mChart.destroy();
-            mChart = new Chart(mCtx, { type: 'line', data: { labels: ['Start','Jetzt'], datasets: [{ data: [val*0.8, val], borderColor: '#00e676', tension: 0.4 }]}, options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { ticks: { color: '#fff' } } } } });
+            mChart = new Chart(mCtx, { type: 'line', data: { labels: ['Start','Jetzt'], datasets: [{ data: [val*0.8, val], borderColor: '#00e676', tension: 0.4 }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { ticks: { color: '#fff' } } } } });
         }
 
         function renderHist() {
@@ -265,7 +229,7 @@
             txs.slice().reverse().forEach((t, i) => {
                 const isFree = (new Date() - new Date(t.date) > 31536000000);
                 const isSell = t.type === 'sell';
-                b.innerHTML += `<tr><td><b style="color:${isSell?'var(--red)':'var(--txt)'}">${t.asset}</b><br><small>${t.date}</small><br><span class="tax-badge ${isFree?'tax-free':'taxable'}">${isFree?'FREI ✅':'BAR'}</span></td><td style="text-align:right;">${isSell?'-':'+'}${t.amount.toFixed(3)}<br><small>$${t.price}</small></td><td style="text-align:right;"><span style="color:var(--red);" onclick="delTx(${txs.length-1-i})">✕</span></td></tr>`;
+                b.innerHTML += `<tr><td><b style="color:${isSell?'var(--red)':'var(--txt)'}">${t.asset}</b><br><small>${t.date}</small><br><span class="tax-badge ${isFree?'tax-free':'taxable'}">${isFree?'FREI ✅':'BAR'}</span></td><td style="text-align:right;">${t.amount.toFixed(3)}<br><small>$${t.price}</small></td><td style="text-align:right;"><span style="color:var(--red);" onclick="delTx(${txs.length-1-i})">✕</span></td></tr>`;
             });
         }
 
@@ -274,7 +238,7 @@
             doc.text("Portfolio Report", 14, 20);
             const rows = txs.map(t => [t.date, t.asset, (t.type||'buy').toUpperCase(), t.amount, t.price+"$", (new Date()-new Date(t.date)>31536000000?'FREI':'BAR')]);
             doc.autoTable({ head:[['Datum','Asset','Typ','Menge','Kurs','Status']], body:rows, startY:30 });
-            doc.save("Report.pdf");
+            doc.save("Krypto_Universal_Report.pdf");
         }
 
         function saveTx() {
@@ -283,23 +247,28 @@
         }
 
         function exportData() { navigator.clipboard.writeText(JSON.stringify(txs)).then(() => alert("Kopiert!")); }
-        function importData() { let c = prompt("Backup einfügen:"); if(c) { txs = JSON.parse(c); localStorage.setItem(DB_KEY, JSON.stringify(txs)); location.reload(); } }
+        function importData() { let c = prompt("Backup:"); if(c) { txs = JSON.parse(c); localStorage.setItem(DB_KEY, JSON.stringify(txs)); location.reload(); } }
         function delTx(i) { if(confirm('Löschen?')) { txs.splice(i,1); localStorage.setItem(DB_KEY, JSON.stringify(txs)); updateUI(); } }
-        function updateTVChart() { const s = document.getElementById('intel-asset-select').value; new TradingView.widget({ "autosize": true, "symbol": "BINANCE:"+s+"USDT", "interval": "60", "theme": "dark", "container_id": "tradingview_chart", "hide_top_toolbar": true }); }
+        function updateTVChart() { const s = document.getElementById('intel-asset-select').value; if(s) new TradingView.widget({ "autosize": true, "symbol": "BINANCE:"+s+"USDT", "interval": "60", "theme": "dark", "container_id": "tradingview_chart", "hide_top_toolbar": true }); }
 
         async function init() {
+            fetchTop15();
             const r = await fetch('https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=EUR'); prices.EUR = (await r.json()).EUR;
-            const syms = config.assets.map(a => a.symbol).join(',');
-            const pr = await fetch(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${syms}&tsyms=USD`);
-            const pData = await pr.json();
-            config.assets.forEach(a => { if(pData[a.symbol]) prices[a.symbol] = pData[a.symbol].USD; });
             const mSel = document.getElementById('intel-asset-select'), jSel = document.getElementById('tx-asset');
             config.assets.forEach(a => { mSel.innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`; jSel.innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`; });
-            const streams = config.assets.map(a => `${a.symbol.toLowerCase()}usdt@trade`).join('/');
-            const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${streams}`);
-            ws.onmessage = (e) => { const d = JSON.parse(e.data); prices[d.s.replace('USDT','')] = parseFloat(d.p); updateUI(); };
+            
+            if(config.assets.length > 0) {
+                const syms = config.assets.map(a => a.symbol).join(',');
+                const pr = await fetch(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${syms}&tsyms=USD`);
+                const pData = await pr.json();
+                config.assets.forEach(a => { if(pData[a.symbol]) prices[a.symbol] = pData[a.symbol].USD; });
+                const streams = config.assets.map(a => `${a.symbol.toLowerCase()}usdt@trade`).join('/');
+                const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${streams}`);
+                ws.onmessage = (e) => { const d = JSON.parse(e.data); prices[d.s.replace('USDT','')] = parseFloat(d.p); updateUI(); };
+            }
+            
             document.getElementById('loading-scr').style.display = 'none';
-            fetchTop15(); renderSettings(); updateUI();
+            renderSettings(); updateUI();
             for(let i=0; i<10; i++) document.getElementById('dotBox').innerHTML += `<span class="dot ${i===0?'active':''}"></span>`;
             document.getElementById('tx-date').value = new Date().toISOString().split('T')[0];
         }
