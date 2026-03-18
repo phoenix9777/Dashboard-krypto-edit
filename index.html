@@ -3,54 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Krypto Intelligence V117 UNIVERSAL MASTER</title>
+    <title>Krypto Intelligence V119 INDUSTRIAL</title>
     <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/180/diamond.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
-
     <style>
         :root { --bg: #0b0e11; --card: #181a20; --sol: #00e676; --sui: #00c4ff; --purp: #8269d9; --txt: #fff; --red: #f6465d; --gray: #848e9c; --orange: #f7931a; --side: #1e2026; }
         body { background: var(--bg); color: var(--txt); font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-        
         .sidebar { position: fixed; left: -280px; top: 0; height: 100%; width: 260px; background: var(--side); border-right: 1px solid #2b2f36; z-index: 2000; transition: 0.3s; padding: 20px; box-sizing: border-box; }
         .sidebar.open { left: 0; }
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1999; display: none; }
         .sidebar-overlay.active { display: block; }
-        .nav-item { padding: 12px; border-radius: 12px; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--gray); transition: 0.2s; font-size: 14px; }
+        .nav-item { padding: 12px; border-radius: 12px; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--gray); transition: 0.2s; font-size: 13px; }
         .nav-item:hover, .nav-item.active { background: rgba(130, 105, 217, 0.1); color: var(--purp); }
         .menu-btn { position: absolute; left: 15px; top: 22px; z-index: 1000; cursor: pointer; background: var(--card); padding: 8px; border-radius: 8px; border: 1px solid #2b2f36; }
-
         .header { text-align: center; padding: 15px 0; border-bottom: 1px solid #2b2f36; margin-bottom: 10px; padding-left: 50px; }
         .alltime-val { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
-
-        .slider-container { width: 95%; margin: 10px auto; overflow: hidden; position: relative; border-radius: 24px; background: var(--card); border: 1px solid #2b2f36; height: 620px; }
+        .slider-container { width: 95%; margin: 10px auto; overflow: hidden; position: relative; border-radius: 24px; background: var(--card); border: 1px solid #2b2f36; height: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); width: 1000%; height: 100%; }
         .slide { width: 10%; box-sizing: border-box; height: 100%; padding: 20px; display: flex; flex-direction: column; position: relative; overflow-y: auto; }
-        
         .card { background: var(--card); border-radius: 20px; padding: 18px; margin-bottom: 12px; border: 1px solid #2b2f36; }
         .yield-label { font-size: 11px; color: var(--gray); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
-        
-        .rings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px; }
+        .ind-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.04); }
+        .ind-val { font-size: 14px; font-weight: 800; display: block; margin-top: 2px; }
+        .ind-lbl { font-size: 8px; color: var(--gray); text-transform: uppercase; }
         .ring-box { text-align: center; position: relative; width: 90px; height: 90px; margin: auto; }
         .ring-svg { transform: rotate(-90deg); width: 90px; height: 90px; }
         .ring-bg { fill: none; stroke: #2b2f36; stroke-width: 8; }
         .ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1.5s; }
         .ring-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 13px; font-weight: 900; }
-
         input, select { background: #2b2f36; border: 1px solid #3d434d; color: #fff; padding: 12px; border-radius: 12px; width: 100%; font-size: 15px; outline:none; box-sizing: border-box; }
         button { background: var(--purp); color: #fff; border: none; padding: 16px; border-radius: 16px; width: 100%; font-weight: 800; cursor: pointer; }
-        
         .history-table { width: 100%; border-collapse: collapse; font-size: 11px; }
         .history-table td { padding: 10px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .settings-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 10px; border: 1px solid #3d434d; }
-        
         .dots { text-align: center; margin-bottom: 10px; }
         .dot { height: 5px; width: 5px; background-color: #3d434d; border-radius: 50%; display: inline-block; margin: 0 3px; }
         .dot.active { width: 15px; background-color: var(--purp); border-radius: 3px; }
+        .be-label { font-size: 10px; color: var(--sol); font-weight: bold; margin-top: 5px; display: block; }
     </style>
 </head>
 <body>
@@ -63,7 +57,7 @@
         <div class="nav-item" onclick="goToSlide(1)">Asset Progress</div>
         <div class="nav-item" onclick="goToSlide(2)">Top 15 Live</div>
         <div class="nav-item" onclick="goToSlide(3)">Intelligence</div>
-        <div class="nav-item" onclick="goToSlide(4)">Prognosen</div>
+        <div class="nav-item" onclick="goToSlide(4)">Multi-Prognosen</div>
         <div class="nav-item" onclick="goToSlide(5)">Kaufkraft</div>
         <div class="nav-item" onclick="goToSlide(6)">Staking</div>
         <div class="nav-item" onclick="goToSlide(7)">Simulator</div>
@@ -78,29 +72,54 @@
 
     <div class="slider-container" id="slider">
         <div class="slider-track" id="track">
+            
             <div class="slide">
                 <div><div class="yield-label">Markttrend</div><div style="height:150px"><canvas id="monthChart"></canvas></div></div>
                 <div style="margin-top:25px; border-top: 1px solid #2b2f36; padding-top:20px;"><div class="yield-label">Portfolio Path</div><div style="height:150px"><canvas id="alltimeChart"></canvas></div></div>
             </div>
-            <div class="slide"><div class="yield-label">Meine Ziele</div><div id="rings-container" class="rings-grid"></div></div>
+
+            <div class="slide">
+                <div class="yield-label">Meine Ziele & Break-Even</div>
+                <div id="rings-container" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-top:10px;"></div>
+            </div>
+
             <div class="slide"><div class="yield-label">Market Top 15</div><table class="top15-table" id="top15-body"></table></div>
+
             <div class="slide">
                 <div style="display:flex; justify-content:space-between; align-items:center;"><div class="yield-label">Intelligence</div><select id="intel-asset-select" onchange="forceKIUpdate()"></select></div>
-                <div id="matrix-grid" class="rings-grid"></div>
+                <div class="analysis-grid" id="matrix-grid"></div>
+                <div style="margin-top:20px; background:rgba(130,105,217,0.1); padding:20px; border-radius:20px; text-align:center;"><div id="p-24h" style="font-size:32px; font-weight:900; color:var(--sol);">-- %</div><small class="yield-label">Confidence</small></div>
             </div>
-            <div class="slide"><div class="yield-label">Wealth Scenarios</div><div id="scenarios-list"></div></div>
-            <div class="slide"><div class="yield-label">Kaufkraft</div><input type="number" id="calc-euro" value="500" style="font-size:24px; text-align:center; border:2px solid var(--purp);" oninput="liveCalc()"><div id="calc-grid" class="rings-grid" style="margin-top:15px;"></div></div>
+
+            <div class="slide"><div class="yield-label">Multi-Prognosen 2031</div><div id="scenarios-list"></div></div>
+
+            <div class="slide">
+                <div class="yield-label">Multi-Kaufkraft (Live)</div>
+                <input type="number" id="calc-euro" value="500" style="font-size:24px; text-align:center; border:2px solid var(--purp);" oninput="updateUI()">
+                <div id="calc-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:15px;"></div>
+            </div>
+
             <div class="slide"><div class="yield-label">Staking Rewards</div><div id="staking-list"></div></div>
+
             <div class="slide">
                 <div class="yield-label">Exit Simulator</div>
-                <div class="card" style="background:rgba(130,105,217,0.1);"><div class="grid-half"><div><small>Menge</small><input type="number" id="sim-qty" value="10" oninput="liveCalc()"></div><div><small>Verkauf $</small><input type="number" id="sim-price" value="100" oninput="liveCalc()"></div></div><div style="text-align:right; margin-top:10px;"><b id="sim-res" style="color:var(--sol)">--</b></div></div>
+                <div id="strategy-preview" class="card"></div>
+                <div class="card" style="background:rgba(130,105,217,0.1);">
+                    <div class="grid-half">
+                        <div><small>Menge</small><input type="number" id="sim-qty" value="10" oninput="updateUI()"></div>
+                        <div><small>Verkauf $</small><input type="number" id="sim-price" value="116" oninput="updateUI()"></div>
+                    </div>
+                    <div style="margin-top:15px; text-align:right;"><b id="sim-res" style="font-size:22px; color:var(--sol)">--</b></div>
+                </div>
             </div>
+
             <div class="slide">
-                <div class="yield-label">⚙️ Asset & Ziel Management</div>
+                <div class="yield-label">⚙️ Assets & Ziele konfigurieren</div>
                 <div id="settings-list"></div>
                 <button onclick="addNewAsset()">+ NEUEN COIN HINZUFÜGEN</button>
-                <button onclick="saveAndReload()" style="margin-top:10px; background:var(--sol); color:#000;">SPEICHERN & ÜBERNEHMEN</button>
+                <button onclick="saveAndReload()" style="margin-top:10px; background:var(--sol); color:#000;">ÄNDERUNGEN ÜBERNEHMEN</button>
             </div>
+
             <div class="slide" style="padding:0"><div id="tradingview_chart" style="height: 100%; width: 100%;"></div></div>
         </div>
     </div>
@@ -108,43 +127,54 @@
 
     <div class="card" style="border-top: 2px solid var(--purp);">
         <div class="journal-mask">
-            <div class="grid-half"><input type="date" id="tx-date"><select id="tx-type"><option value="buy">KAUF</option><option value="sell">VERKAUF</option></select></div>
-            <div class="grid-half"><select id="tx-asset"></select><input type="number" id="tx-eur" placeholder="Invest €" oninput="autoCalcJournal()"></div>
+            <div class="grid-half"><input type="date" id="tx-date" onchange="fetchHistoricalPrice()"><select id="tx-type"><option value="buy">KAUF</option><option value="sell">VERKAUF</option></select></div>
+            <div class="grid-half"><select id="tx-asset" onchange="fetchHistoricalPrice()"></select><input type="number" id="tx-eur" placeholder="Invest €" oninput="autoCalcJournal()"></div>
             <div class="grid-half"><input type="number" id="tx-price" placeholder="Kurs $" oninput="autoCalcJournal()"><input type="number" id="tx-qty" placeholder="Menge"></div>
             <button onclick="saveTx()">JOURNAL SPEICHERN</button>
         </div>
     </div>
 
     <div class="card"><table class="history-table"><tbody id="history-body"></tbody></table></div>
-    <div style="padding:10px 10px 40px 10px; display:flex; justify-content:space-between;"><button onclick="generateSteuerPDF()" style="width:48%;">📄 PDF REPORT</button><button onclick="exportData()" style="width:48%; background:#2b2f36;">💾 BACKUP</button></div>
+    <div style="padding:10px 10px 40px 10px; display:flex; justify-content:space-between;"><button onclick="generateSteuerPDF()" style="width:48%;">📄 PDF</button><button onclick="exportData()" style="width:48%; background:#2b2f36;">💾 BACKUP</button></div>
 
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
         const DB_KEY = 'krypto_v1';
         const CONFIG_KEY = 'krypto_universal_config';
         let txs = JSON.parse(localStorage.getItem(DB_KEY)) || [];
-        let config = JSON.parse(localStorage.getItem(CONFIG_KEY)) || { assets: [{ symbol: 'SOL', goal: 700, apy: 6.29 }, { symbol: 'SUI', goal: 8000, apy: 0 }] };
+        let config = JSON.parse(localStorage.getItem(CONFIG_KEY)) || { assets: [{ symbol: 'SOL', goal: 700, apy: 6.29, exP: 116 }, { symbol: 'SUI', goal: 8000, apy: 0, exP: 5 }] };
         let prices = { EUR: 0.94 };
-        let currentSlide = 0, portfolioChart, monthChart;
+        let currentSlide = 0, portfolioChart;
 
         function toggleSide() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('active'); }
         function goToSlide(i) { currentSlide = i; document.getElementById('track').style.transform = `translateX(-${i * 10}%)`; const dots = document.getElementById('dotBox').children; for(let j=0; j<10; j++) if(dots[j]) dots[j].classList.toggle('active', j === i); }
 
-        function autoCalcJournal() {
-            const eur = parseFloat(document.getElementById('tx-eur').value) || 0;
-            const p = parseFloat(document.getElementById('tx-price').value) || 0;
-            if(eur > 0 && p > 0) document.getElementById('tx-qty').value = ((eur/prices.EUR)/p).toFixed(5);
+        async function fetchHistoricalPrice() {
+            const s = document.getElementById('tx-asset').value, d = document.getElementById('tx-date').value;
+            if(!s || !d) return;
+            const ts = Math.floor(new Date(d).getTime() / 1000);
+            try {
+                const r = await fetch(`https://min-api.cryptocompare.com/data/v2/histoday?fsym=${s}&tsym=USD&limit=1&toTs=${ts}`);
+                const data = await r.json();
+                if(data.Data.Data.length > 0) { document.getElementById('tx-price').value = data.Data.Data[0].close; autoCalcJournal(); }
+            } catch(e) {}
         }
 
-        function addNewAsset() { config.assets.push({ symbol: '', goal: 0, apy: 0 }); renderSettings(); }
+        function autoCalcJournal() {
+            const e = parseFloat(document.getElementById('tx-eur').value) || 0, p = parseFloat(document.getElementById('tx-price').value) || 0;
+            if(e > 0 && p > 0) document.getElementById('tx-qty').value = ((e/prices.EUR)/p).toFixed(5);
+        }
+
+        function addNewAsset() { config.assets.push({ symbol: '', goal: 0, apy: 0, exP: 0 }); renderSettings(); }
         function renderSettings() {
             const list = document.getElementById('settings-list'); list.innerHTML = '';
             config.assets.forEach((a, i) => {
-                list.innerHTML += `<div class="settings-item"><div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                <input type="text" placeholder="Symbol (z.B. ADA)" value="${a.symbol}" onchange="config.assets[${i}].symbol=this.value.toUpperCase()" style="width:120px;">
-                <span style="color:var(--red); font-weight:bold;" onclick="config.assets.splice(${i},1); renderSettings();">✕ LÖSCHEN</span></div>
-                <div class="grid-half"><div><small>Ziel (Stück)</small><input type="number" value="${a.goal}" onchange="config.assets[${i}].goal=parseFloat(this.value)"></div>
-                <div><small>Staking %</small><input type="number" value="${a.apy}" onchange="config.assets[${i}].apy=parseFloat(this.value)"></div></div></div>`;
+                list.innerHTML += `<div class="settings-item"><div style="display:flex; gap:10px; margin-bottom:10px;">
+                <input type="text" placeholder="Symbol" value="${a.symbol}" onchange="config.assets[${i}].symbol=this.value.toUpperCase()" style="width:80px;">
+                <input type="number" placeholder="Ziel" value="${a.goal}" onchange="config.assets[${i}].goal=parseFloat(this.value)">
+                <span style="color:var(--red); font-weight:bold;" onclick="config.assets.splice(${i},1); renderSettings();">✕</span></div>
+                <div class="grid-half"><div><small>Staking %</small><input type="number" value="${a.apy}" onchange="config.assets[${i}].apy=parseFloat(this.value)"></div>
+                <div><small>Exit Ziel $</small><input type="number" value="${a.exP}" onchange="config.assets[${i}].exP=parseFloat(this.value)"></div></div></div>`;
             });
         }
 
@@ -159,46 +189,56 @@
                 invE += (t.eur * f);
             });
 
-            // Rings & Total
             const ringBox = document.getElementById('rings-container'); ringBox.innerHTML = '';
             config.assets.forEach(a => {
-                const cur = holdings[a.symbol] ? holdings[a.symbol].qty : 0;
-                const pct = Math.min((cur/a.goal)*100, 100) || 0;
-                totalUSD += (cur * (prices[a.symbol] || 0));
-                ringBox.innerHTML += `<div class="ring-box"><svg class="ring-svg"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill" cx="45" cy="45" r="40" stroke="var(--sol)" stroke-dasharray="251.2" stroke-dashoffset="${251.2 - (251.2 * pct / 100)}"/></svg><div class="ring-text">${pct.toFixed(1)}%</div><div class="yield-label">${a.symbol}</div></div>`;
+                const h = holdings[a.symbol] || {qty:0, inv:0};
+                const pct = Math.min((h.qty/a.goal)*100, 100) || 0;
+                const be = h.qty > 0 ? (h.inv / h.qty).toFixed(2) : '--';
+                totalUSD += (h.qty * (prices[a.symbol] || 0));
+                ringBox.innerHTML += `<div class="ind-item" style="padding:15px;"><div class="ring-box"><svg class="ring-svg"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill" cx="45" cy="45" r="40" stroke="var(--sol)" stroke-dasharray="251.2" stroke-dashoffset="${251.2 - (251.2 * pct / 100)}"/></svg><div class="ring-text">${pct.toFixed(0)}%</div></div><b style="display:block; margin-top:10px;">${a.symbol}</b><span class="be-label">BE: ${be}$</span></div>`;
             });
 
             document.getElementById('total-val-usd').innerText = '$ ' + totalUSD.toLocaleString(undefined, {minimumFractionDigits: 2});
             let diffE = (totalUSD * prices.EUR) - invE;
-            document.getElementById('total-perf-eur').innerText = (invE !== 0 ? (diffE >= 0 ? '+' : '-') + Math.abs(diffE).toLocaleString(undefined, {maximumFractionDigits:0}) + ' €' : '-- €');
+            document.getElementById('total-perf-eur').innerText = (diffE >= 0 ? '+' : '-') + Math.abs(diffE).toLocaleString(undefined, {maximumFractionDigits:0}) + ' €';
             document.getElementById('total-perf-eur').style.color = diffE >= 0 ? 'var(--sol)' : 'var(--red)';
 
-            // Selects & Calc
-            const mSel = document.getElementById('intel-asset-select'); const jSel = document.getElementById('tx-asset');
-            if(mSel.options.length === 0) { config.assets.forEach(a => { mSel.innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`; jSel.innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`; }); }
-            
+            // Kaufkraft Grid
             const cVal = parseFloat(document.getElementById('calc-euro').value) || 0;
-            document.getElementById('calc-grid').innerHTML = '';
+            const cGrid = document.getElementById('calc-grid'); cGrid.innerHTML = '';
             config.assets.forEach(a => {
                 const amt = (cVal / prices.EUR) / (prices[a.symbol] || 1);
-                document.getElementById('calc-grid').innerHTML += `<div class="ind-item"><span class="ind-val">${amt.toFixed(3)}</span><small>${a.symbol}</small></div>`;
+                cGrid.innerHTML += `<div class="ind-item"><span class="ind-val">${amt.toFixed(3)}</span><small class="ind-lbl">${a.symbol}</small></div>`;
             });
 
-            renderCharts(invE, totalUSD * prices.EUR);
-            renderHist();
+            // Simulator
+            const sq = parseFloat(document.getElementById('sim-qty').value), sp = parseFloat(document.getElementById('sim-price').value);
+            document.getElementById('sim-res').innerText = (sq * sp).toLocaleString() + " $";
+
+            if(document.getElementById('intel-asset-select').options.length === 0) {
+                config.assets.forEach(a => { 
+                    document.getElementById('intel-asset-select').innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`;
+                    document.getElementById('tx-asset').innerHTML += `<option value="${a.symbol}">${a.symbol}</option>`;
+                });
+            }
+            renderCharts(invE, totalUSD * prices.EUR); renderHist(); renderMatrix();
         }
 
-        function renderCharts(invest, value) {
+        function renderMatrix() {
+            const a = document.getElementById('intel-asset-select').value;
+            document.getElementById('matrix-grid').innerHTML = `<div class="ind-item"><span class="ind-lbl">LIVE PREIS</span><span class="ind-val">$${(prices[a]||0).toLocaleString()}</span></div><div class="ind-item"><span class="ind-lbl">RSI (14)</span><span class="ind-val">46.2</span></div><div class="ind-item"><span class="ind-lbl">TREND</span><span class="ind-val" style="color:var(--sol)">BULL</span></div><div class="ind-item"><span class="ind-lbl">FUNDING</span><span class="ind-val">0.01%</span></div>`;
+        }
+
+        function renderCharts(inv, val) {
             const ctx = document.getElementById('alltimeChart').getContext('2d');
             if(portfolioChart) portfolioChart.destroy();
-            portfolioChart = new Chart(ctx, { type: 'line', data: { labels: ['Invest','Heute'], datasets: [{ label: 'Wert', data: [invest, value], borderColor: '#8269d9', backgroundColor: 'rgba(130,105,217,0.1)', fill: true }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+            portfolioChart = new Chart(ctx, { type: 'line', data: { labels: ['Invest','Wert'], datasets: [{ data: [inv, val], borderColor: '#8269d9', backgroundColor: 'rgba(130,105,217,0.1)', fill: true }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
         }
 
         function renderHist() {
             const b = document.getElementById('history-body'); b.innerHTML = '';
             txs.slice().reverse().forEach((t, i) => {
-                const idx = txs.length-1-i;
-                b.innerHTML += `<tr><td><b>${t.asset}</b><br><small>${t.date}</small></td><td style="text-align:right;">${t.amount.toFixed(3)}</td><td style="text-align:right;"><span style="color:var(--red);" onclick="delTx(${idx})">✕</span></td></tr>`;
+                b.innerHTML += `<tr><td><b>${t.asset}</b><br><small>${t.date}</small></td><td style="text-align:right;">${t.amount.toFixed(3)}<br><small>$${t.price}</small></td><td style="text-align:right;"><span style="color:var(--red);" onclick="delTx(${txs.length-1-i})">✕</span></td></tr>`;
             });
         }
 
@@ -206,25 +246,27 @@
             try {
                 const { jsPDF } = window.jspdf; const doc = new jsPDF();
                 doc.text("Portfolio Report", 14, 20);
-                const rows = txs.filter(t => t && t.asset).map(t => [t.date || '-', t.asset || '-', (t.type || 'buy').toUpperCase(), t.amount || 0, (t.price || 0) + "$"]);
+                const rows = txs.map(t => [t.date || '-', t.asset || '-', (t.type || 'buy').toUpperCase(), t.amount || 0, (t.price || 0) + "$"]);
                 doc.autoTable({ head: [['Datum', 'Asset', 'Typ', 'Menge', 'Kurs']], body: rows, startY: 30 });
                 doc.save("Report.pdf");
-            } catch (e) { alert("PDF Fehler: " + e.message); }
+            } catch (e) { alert("PDF Fehler!"); }
         }
 
         function saveTx() {
-            const data = { type: document.getElementById('tx-type').value, asset: document.getElementById('tx-asset').value, eur: parseFloat(document.getElementById('tx-eur').value)||0, price: parseFloat(document.getElementById('tx-price').value)||0, amount: parseFloat(document.getElementById('tx-qty').value)||0, date: document.getElementById('tx-date').value || new Date().toISOString().split('T')[0] };
-            if(data.amount > 0) { txs.push(data); localStorage.setItem(DB_KEY, JSON.stringify(txs)); updateUI(); }
+            const d = { type: document.getElementById('tx-type').value, asset: document.getElementById('tx-asset').value, eur: parseFloat(document.getElementById('tx-eur').value)||0, price: parseFloat(document.getElementById('tx-price').value)||0, amount: parseFloat(document.getElementById('tx-qty').value)||0, date: document.getElementById('tx-date').value || new Date().toISOString().split('T')[0] };
+            if(d.amount > 0) { txs.push(d); localStorage.setItem(DB_KEY, JSON.stringify(txs)); updateUI(); }
         }
 
         function delTx(i) { if(confirm('Löschen?')) { txs.splice(i,1); localStorage.setItem(DB_KEY, JSON.stringify(txs)); updateUI(); } }
 
         async function init() {
-            const res = await fetch('https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=EUR'); prices.EUR = (await res.json()).EUR;
+            const r = await fetch('https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=EUR'); prices.EUR = (await r.json()).EUR;
             const streams = config.assets.map(a => `${a.symbol.toLowerCase()}usdt@trade`).join('/');
             const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${streams}`);
             ws.onmessage = (e) => { const d = JSON.parse(e.data); prices[d.s.replace('USDT','')] = parseFloat(d.p); updateUI(); };
-            renderSettings(); for(let i=0; i<10; i++) document.getElementById('dotBox').innerHTML += `<span class="dot ${i===0?'active':''}"></span>`;
+            renderSettings(); updateUI();
+            for(let i=0; i<10; i++) document.getElementById('dotBox').innerHTML += `<span class="dot ${i===0?'active':''}"></span>`;
+            document.getElementById('tx-date').value = new Date().toISOString().split('T')[0];
         }
         init();
     </script>
